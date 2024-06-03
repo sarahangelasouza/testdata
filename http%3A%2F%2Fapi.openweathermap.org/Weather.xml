@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Weather" path="/data/2.5/weather" id="d5cbde4b-a95c-471e-97d7-715d2be0f98e">
+  <con:settings id="7f60d957-33a3-4230-8923-aea248f296b7">
+    <con:setting id="d5cbde4b-a95c-471e-97d7-715d2be0f98efileName">Weather</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="Weather" id="9716c6de-7ec2-4b73-af88-a19ac8a6f35e" method="GET">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>q</con:name>
+        <con:value>Boston</con:value>
+        <con:style>QUERY</con:style>
+        <con:default>Boston</con:default>
+        <con:path xsi:nil="true"/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>appid</con:name>
+        <con:value>85c705dd76051cb3d8e5540b300279d4</con:value>
+        <con:style>QUERY</con:style>
+        <con:default>85c705dd76051cb3d8e5540b300279d4</con:default>
+        <con:path xsi:nil="true"/>
+        <con:description xsi:nil="true"/>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:weat="http://api.openweathermap.org/data/2.5/weather">weat:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="8bba076d-df63-4de2-9078-c70f7a705927" mediaType="application/json">
+      <con:settings/>
+      <con:endpoint>http://api.openweathermap.org</con:endpoint>
+      <con:parameters>
+        <con:entry key="q" value="Boston"/>
+        <con:entry key="appid" value="85c705dd76051cb3d8e5540b300279d4"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>q</con:entry>
+        <con:entry>appid</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

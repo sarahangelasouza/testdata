@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="f4992860-b4e8-40f5-b63c-a41f0651f7d7" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="http://api.openweathermap.org Test Case 1" searchProperties="true" timeout="0">
+  <con:settings id="899791b5-b454-4cf1-bb5d-dc29317d4314">
+    <con:setting id="f4992860-b4e8-40f5-b63c-a41f0651f7d7fileName">http%3A%2F%2Fapi.openweathermap.org-Test-Case-1</con:setting>
+  </con:settings>
+  <con:testStep type="datasource" name="Data Source" id="68ece945-5785-4ee0-9de8-6c2a7217f3ed">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep">
+      <con:dataSource type="Excel">
+        <con:configuration>
+          <file>./InternationalCities.xlsx</file>
+          <worksheet/>
+          <cell>A1</cell>
+          <ignoreEmpty>false</ignoreEmpty>
+          <evaluateFormulas>false</evaluateFormulas>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>City</con:property>
+      <con:property>CountryCode</con:property>
+      <con:property>Country</con:property>
+      <con:restartOnRun>true</con:restartOnRun>
+      <con:stopDatasourceExhausted>false</con:stopDatasourceExhausted>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Request 1" id="fd5499f8-fe10-402d-8203-f2f496bd3c34">
+    <con:settings/>
+    <con:config service="http://api.openweathermap.org" resourcePath="/data/2.5/weather" methodName="Weather" xsi:type="con:RestRequestStep">
+      <con:restRequest name="Request 1" id="8bba076d-df63-4de2-9078-c70f7a705927" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>http://api.openweathermap.org</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://api.openweathermap.org/data/2.5/weather</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2d01ee45-bc5c-4e09-a4f3-9a4a6eae2b6c" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="Response SLA Assertion" id="5fedec94-4d1a-418f-86f7-8bbc1033348e" name="Response SLA">
+          <con:configuration>
+            <SLA>200</SLA>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="q" value="Boston"/>
+          <con:entry key="appid" value="85c705dd76051cb3d8e5540b300279d4"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>q</con:entry>
+          <con:entry>appid</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="Data Source Loop" id="4a57e924-40e4-48b5-ac35-84bb1a0c0cd0">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>Data Source</dataSourceStep>
+      <targetStep>Request 1</targetStep>
+      <discardResults>true</discardResults>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

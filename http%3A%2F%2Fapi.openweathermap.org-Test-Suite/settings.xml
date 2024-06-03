@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite xmlns:con="http://eviware.com/soapui/config" id="632bec7d-9f9b-4f2a-b73c-271f5056b452" name="http://api.openweathermap.org Test Suite">
+  <con:settings id="d40a621e-5a91-4888-bd46-7a8f3875ad11">
+    <con:setting id="632bec7d-9f9b-4f2a-b73c-271f5056b452fileName">http%3A%2F%2Fapi.openweathermap.org-Test-Suite</con:setting>
+  </con:settings>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testSuite>
